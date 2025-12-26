@@ -1,0 +1,112 @@
+﻿@page
+@model DanhSachHoaDonModel
+@{
+    ViewData["Title"] = "Danh sách hóa đơn";
+}
+
+<div class="page-header">
+    <div class="container">
+        <h1 class="display-5"><i class="bi bi-receipt"></i> Danh sách hóa đơn</h1>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Thống kê -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card border-primary">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="text-muted mb-0">Tổng số hóa đơn</p>
+                            <h3 class="text-primary mb-0">@Model.TongHoaDon</h3>
+                        </div>
+                        <div class="ms-auto">
+                            <i class="bi bi-receipt" style="font-size: 2.5rem; color: var(--primary-blue);"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-success">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="text-muted mb-0">Tổng doanh thu</p>
+                            <h3 class="text-success mb-0">@Model.TongDoanhThu.ToString("N0")</h3>
+                        </div>
+                        <div class="ms-auto">
+                            <i class="bi bi-cash-coin" style="font-size: 2.5rem; color: #28a745;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Danh sách hóa đơn -->
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="bi bi-list-check"></i> Danh sách hóa đơn đã thanh toán</h5>
+        </div>
+        <div class="card-body">
+            @if (Model.DanhSachHoaDon.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Mã hóa đơn</th>
+                                <th>Mã BN</th>
+                                <th>Tên bệnh nhân</th>
+                                <th>Ngày lập</th>
+                                <th class="text-end">Tiền thanh toán</th>
+                                <th class="text-center">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var hd in Model.DanhSachHoaDon)
+                            {
+                                <tr>
+                                    <td><strong>@hd.MaHd</strong></td>
+                                    <td>@hd.MaBn</td>
+                                    <td>@hd.TenBn</td>
+                                    <td>@hd.NgayLap?.ToString("dd/MM/yyyy")</td>
+                                    <td class="text-end fw-bold text-danger">@hd.ThanhTien.ToString("N0")</td>
+                                    <td class="text-center">
+                                        <a href="/ChiTietHoaDon?maHd=@hd.MaHd"
+                                           class="btn btn-sm btn-info"
+                                           title="Xem chi tiết">
+                                            <i class="bi bi-eye"></i> Xem
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot class="table-light">
+                            <tr>
+                                <th colspan="4" class="text-end">Tổng cộng:</th>
+                                <th class="text-end fw-bold text-danger">@Model.TongDoanhThu.ToString("N0")</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle"></i> Chưa có hóa đơn nào.
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Button Quay lại -->
+    <div class="mt-4 mb-5">
+        <a href="/DanhSachBenhNhan" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Quay lại danh sách bệnh nhân
+        </a>
+    </div>
+</div>

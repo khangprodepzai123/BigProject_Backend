@@ -1,0 +1,181 @@
+﻿@page
+@model ThanhToanModel
+@{
+    ViewData["Title"] = "Thanh toán";
+}
+
+<div class="page-header">
+    <div class="container">
+        <h1 class="display-5"><i class="bi bi-credit-card"></i> Thanh toán</h1>
+    </div>
+</div>
+
+<div class="container">
+    @if (Model.BenhNhan == null || Model.KhamBenh == null)
+    {
+        <div class="alert alert-danger">
+            <i class="bi bi-exclamation-triangle"></i> Không tìm thấy phiếu khám!
+        </div>
+        <a href="/DanhSachBenhNhan" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Quay lại danh sách
+        </a>
+    }
+    else
+    {
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle"></i> @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+
+        <!-- Thông tin bệnh nhân -->
+        <div class="card mb-3 border-primary">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-person-badge"></i> Thông tin bệnh nhân
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="text-muted">Mã bệnh nhân:</label>
+                        <p class="fw-bold">@Model.BenhNhan.MaBn</p>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-muted">Họ và tên:</label>
+                        <p class="fw-bold text-primary">@Model.BenhNhan.HoTenBn</p>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-muted">Số điện thoại:</label>
+                        <p>@Model.BenhNhan.Sdt</p>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-muted">Số BHYT:</label>
+                        <p>
+                            @if (Model.CoMaBHYT)
+                            {
+                                <span class="badge bg-success">@Model.BenhNhan.Bhyt</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Không có</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Danh sách thuốc -->
+        <div class="card mb-3 border-info">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-prescription2"></i> Danh sách thuốc đã kê
+                </h5>
+            </div>
+            <div class="card-body">
+                @if (Model.DanhSachThuoc.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Tên thuốc</th>
+                                    <th class="text-end">Số lượng</th>
+                                    <th class="text-end">Đơn giá</th>
+                                    <th class="text-end">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var thuoc in Model.DanhSachThuoc)
+                                {
+                                    <tr>
+                                        <td>@thuoc.TenThuoc</td>
+                                        <td class="text-end">@thuoc.SoLuong</td>
+                                        <td class="text-end">@thuoc.DonGia.ToString("N0")</td>
+                                        <td class="text-end fw-bold">@thuoc.ThanhTien.ToString("N0")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        <i class="bi bi-info-circle"></i> Chưa kê thuốc cho phiếu khám này.
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Chi phí thanh toán -->
+        <div class="card mb-3 border-success">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-calculator"></i> Chi phí thanh toán
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row mb-2">
+                            <div class="col-8">Tiền khám:</div>
+                            <div class="col-4 text-end">@Model.TienKham.ToString("N0")</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-8">Tiền thuốc:</div>
+                            <div class="col-4 text-end">@Model.TongTienThuoc.ToString("N0")</div>
+                        </div>
+                        <hr />
+                        <div class="row mb-2">
+                            <div class="col-8 fw-bold">Tổng cộng:</div>
+                            <div class="col-4 text-end fw-bold">@Model.TongCong.ToString("N0")</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        @if (Model.CoMaBHYT)
+                        {
+                            <div class="alert alert-info">
+                                <strong>Bệnh nhân có BHYT</strong>
+                                <div class="row mt-2">
+                                    <div class="col-8">Giảm giá BHYT (80%):</div>
+                                    <div class="col-4 text-end text-success">-@Model.GiamGiaBHYT.ToString("N0")</div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-8 fw-bold">Tiền thanh toán:</div>
+                                    <div class="col-4 text-end fw-bold text-danger">@Model.ThanhTien.ToString("N0")</div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">
+                                <strong>Bệnh nhân không có BHYT</strong>
+                                <div class="row mt-2">
+                                    <div class="col-8 fw-bold">Tiền thanh toán:</div>
+                                    <div class="col-4 text-end fw-bold text-danger">@Model.ThanhTien.ToString("N0")</div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
+            <a href="/DanhSachBenhNhan" class="btn btn-secondary btn-lg">
+                <i class="bi bi-arrow-left"></i> Quay lại
+            </a>
+            <form method="post" style="display: inline;">
+                <button type="submit" class="btn btn-success btn-lg" onclick="return confirm('Xác nhận thanh toán?');">
+                    <i class="bi bi-check-circle"></i> Xác nhận thanh toán
+                </button>
+            </form>
+        </div>
+    }
+</div>

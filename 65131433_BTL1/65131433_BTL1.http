@@ -1,0 +1,6 @@
+@_65131433_BTL1_HostAddress = http://localhost:5237
+
+GET {{_65131433_BTL1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

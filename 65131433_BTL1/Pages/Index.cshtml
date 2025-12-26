@@ -1,0 +1,114 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<div class="page-header">
+    <div class="container">
+        <h1 class="display-4 text-primary"><i class="bi bi-hospital"></i> Chào mừng đến Phòng Khám Online</h1>
+        <p class="lead">Chăm sóc sức khỏe chuyên nghiệp - Tận tâm với từng bệnh nhân</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title text-primary"><i class="bi bi-info-circle"></i> Giới thiệu</h3>
+                    <p class="card-text">
+                        Phòng Khám Online là hệ thống quản lý phòng khám hiện đại,
+                        giúp bệnh nhân dễ dàng đăng ký khám bệnh, theo dõi lịch sử khám và
+                        quản lý thông tin sức khỏe một cách tiện lợi.
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Đội ngũ bác sĩ giàu kinh nghiệm</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Trang thiết bị hiện đại</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Quy trình khám nhanh chóng</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> Chi phí hợp lý</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title text-primary"><i class="bi bi-geo-alt"></i> Thông tin liên hệ</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-house text-primary"></i>
+                            <strong>Địa chỉ:</strong> 123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-telephone text-primary"></i>
+                            <strong>Điện thoại:</strong> 1900-xxxx
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-envelope text-primary"></i>
+                            <strong>Email:</strong> contact@phongkhamonline.vn
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-clock text-primary"></i>
+                            <strong>Giờ làm việc:</strong>
+                            <ul class="mt-2">
+                                <li>Thứ 2 - Thứ 6: 8:00 - 17:00</li>
+                                <li>Thứ 7: 8:00 - 12:00</li>
+                                <li>Chủ nhật: Nghỉ</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h3 class="card-title text-primary mb-4">
+                        <i class="bi bi-clipboard2-pulse"></i> Dịch vụ khám chữa bệnh
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-heart-pulse display-4 text-danger"></i>
+                                <h5 class="mt-2">Khám nội khoa</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-lungs display-4 text-info"></i>
+                                <h5 class="mt-2">Khám hô hấp</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-prescription2 display-4 text-success"></i>
+                                <h5 class="mt-2">Tư vấn thuốc</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3">
+                                <i class="bi bi-file-medical display-4 text-warning"></i>
+                                <h5 class="mt-2">Khám tổng quát</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mb-5">
+        <h3 class="mb-4">Bắt đầu quản lý bệnh nhân ngay hôm nay!</h3>
+        <a href="/ThemBenhNhan" class="btn btn-primary btn-lg me-3">
+            <i class="bi bi-person-plus"></i> Thêm bệnh nhân mới
+        </a>
+        <a href="/DanhSachBenhNhan" class="btn btn-outline-primary btn-lg">
+            <i class="bi bi-list-ul"></i> Xem danh sách bệnh nhân
+        </a>
+    </div>
+</div>

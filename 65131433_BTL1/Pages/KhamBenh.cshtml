@@ -1,0 +1,296 @@
+﻿@page
+@model KhamBenhModel
+@{
+    ViewData["Title"] = "Phiếu khám bệnh";
+}
+
+<div class="page-header">
+    <div class="container">
+        <h1 class="display-5"><i class="bi bi-stethoscope"></i> Phiếu khám bệnh</h1>
+    </div>
+</div>
+
+<div class="container">
+    @if (Model.BenhNhan == null || Model.KhamBenh == null)
+    {
+        <div class="alert alert-danger">
+            <i class="bi bi-exclamation-triangle"></i> Không tìm thấy phiếu khám!
+        </div>
+        <a href="/DanhSachBenhNhan" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Quay lại danh sách
+        </a>
+    }
+    else
+    {
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="bi bi-exclamation-triangle"></i> @TempData["ErrorMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+
+        <form method="post" id="formKhamBenh">
+            <input type="hidden" name="MaKham" value="@Model.KhamBenh.MaKham" />
+
+            <!-- Card 1: Thông tin bệnh nhân -->
+            <div class="card mb-3 border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-person-badge"></i> Thông tin bệnh nhân
+                        <span class="badge bg-light text-dark float-end">Mã khám: @Model.KhamBenh.MaKham</span>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="text-muted">Mã bệnh nhân:</label>
+                            <p class="fw-bold">@Model.BenhNhan.MaBn</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="text-muted">Họ và tên:</label>
+                            <p class="fw-bold text-primary">@Model.BenhNhan.HoTenBn</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="text-muted">Ngày sinh:</label>
+                            <p>@(Model.BenhNhan.NgaySinh?.ToString("dd/MM/yyyy") ?? "N/A")</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="text-muted">Số điện thoại:</label>
+                            <p>@Model.BenhNhan.Sdt</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Thông tin khám -->
+            <div class="card mb-3 border-info">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="bi bi-clipboard2-pulse"></i> Thông tin khám</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="bi bi-calendar3"></i> Ngày khám</label>
+                            <input type="date" class="form-control" name="NgayKham"
+                                   value="@(Model.KhamBenh.NgayKham?.ToString("yyyy-MM-dd") ?? DateTime.Now.ToString("yyyy-MM-dd"))" />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="bi bi-person-badge"></i> Bác sĩ khám <span class="text-danger">*</span></label>
+                            <select class="form-select" name="MaBs" required>
+                                <option value="">-- Chọn bác sĩ --</option>
+                                @foreach (var bs in Model.DanhSachBacSi)
+                                {
+                                    @if (bs.MaBs == Model.KhamBenh.MaBs)
+                                    {
+                                        <option value="@bs.MaBs" selected>@bs.HoTenBs</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@bs.MaBs">@bs.HoTenBs</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label"><i class="bi bi-chat-left-text"></i> Lý do khám</label>
+                            <textarea class="form-control" name="LyDoKham" rows="2" placeholder="Nhập lý do khám...">@Model.KhamBenh.LyDoKham</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="bi bi-journal-medical"></i> Quá trình bệnh lý</label>
+                            <textarea class="form-control" name="QuaTrinhBenhLy" rows="2" placeholder="Mô tả quá trình bệnh...">@Model.KhamBenh.QuaTrinhBenhLy</textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="bi bi-file-medical"></i> Tiền sử bệnh nhân</label>
+                            <textarea class="form-control" name="TienSuBenhNhan" rows="2" placeholder="Tiền sử bệnh của bệnh nhân...">@Model.KhamBenh.TienSuBenhNhan</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="bi bi-people"></i> Tiền sử gia đình</label>
+                            <textarea class="form-control" name="TienSuGiaDinh" rows="2" placeholder="Tiền sử bệnh gia đình...">@Model.KhamBenh.TienSuGiaDinh</textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="bi bi-bandaid"></i> Khám bộ phận</label>
+                            <textarea class="form-control" name="KhamBoPhan" rows="2" placeholder="Kết quả khám bộ phận...">@Model.KhamBenh.KhamBoPhan</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Khám lâm sàng -->
+            <div class="card mb-3 border-success">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-clipboard-check"></i> Khám lâm sàng</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label"><i class="bi bi-exclamation-circle"></i> Chuẩn đoán chính <span class="text-danger">*</span></label>
+                            <select class="form-select" name="MaCd" required>
+                                <option value="">-- Chọn chuẩn đoán --</option>
+                                @foreach (var cd in Model.DanhSachChuanDoan)
+                                {
+                                    @if (cd.MaCd == Model.KhamBenh.MaCd)
+                                    {
+                                        <option value="@cd.MaCd" selected>@cd.TenCd</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@cd.MaCd">@cd.TenCd</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="bi bi-card-checklist"></i> Loại khám</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="LoaiKham" id="lamSang"
+                                           value="Lâm sàng" @(Model.KhamBenh.LoaiKham == "Lâm sàng" ? "checked" : "")>
+                                    <label class="form-check-label" for="lamSang">Lâm sàng</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="LoaiKham" id="canLamSang"
+                                           value="Cận lâm sàng" @(Model.KhamBenh.LoaiKham == "Cận lâm sàng" ? "checked" : "")>
+                                    <label class="form-check-label" for="canLamSang">Cận lâm sàng</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="bi bi-hospital"></i> Xử trí khám</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="XuTriKham" id="ketThuc"
+                                           value="Kết thúc điều trị" @(Model.KhamBenh.XuTriKham == "Kết thúc điều trị" ? "checked" : "")>
+                                    <label class="form-check-label" for="ketThuc">Kết thúc điều trị</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="XuTriKham" id="nhapVien"
+                                           value="Nhập viện" @(Model.KhamBenh.XuTriKham == "Nhập viện" ? "checked" : "")>
+                                    <label class="form-check-label" for="nhapVien">Nhập viện</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Kê đơn thuốc -->
+            <div class="card mb-3 border-warning">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0"><i class="bi bi-prescription2"></i> Kê đơn thuốc</h5>
+                </div>
+                <div class="card-body">
+                    <div id="danhSachThuoc">
+                        <!-- Thuốc sẽ được thêm động bằng JavaScript -->
+                    </div>
+                    <button type="button" class="btn btn-success btn-sm" onclick="themThuoc()">
+                        <i class="bi bi-plus-circle"></i> Thêm thuốc
+                    </button>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
+                <a href="/DanhSachBenhNhan" class="btn btn-secondary btn-lg">
+                    <i class="bi bi-arrow-left"></i> Quay lại
+                </a>
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="bi bi-save"></i> Lưu phiếu khám
+                </button>
+            </div>
+        </form>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        let thuocCounter = 0;
+        const danhSachThuoc = @Html.Raw(Json.Serialize(Model.DanhSachThuoc));
+        const thuocDaKe = @Html.Raw(Json.Serialize(Model.DanhSachThuocDaKe));
+
+        // Load thuốc đã kê (nếu có) khi trang load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (thuocDaKe && thuocDaKe.length > 0) {
+                thuocDaKe.forEach(tk => {
+                    const thuocInfo = danhSachThuoc.find(t => t.maThuoc === tk.maThuoc);
+                    if (thuocInfo) {
+                        themThuocVoiDuLieu(tk.maThuoc, tk.soLuong, tk.lieuDung || '', tk.cachDung || '');
+                    }
+                });
+            } else {
+                // Nếu chưa có thuốc nào, thêm 1 dòng trống
+                themThuoc();
+            }
+        });
+
+        function themThuoc() {
+            themThuocVoiDuLieu('', 1, '', '');
+        }
+
+        function themThuocVoiDuLieu(maThuocChon, soLuongChon, lieuDungChon, cachDungChon) {
+            thuocCounter++;
+            const container = document.getElementById('danhSachThuoc');
+
+            const thuocDiv = document.createElement('div');
+            thuocDiv.className = 'border rounded p-3 mb-3 bg-light';
+            thuocDiv.id = 'thuoc-' + thuocCounter;
+
+            let optionsThuoc = '<option value="">-- Chọn thuốc --</option>';
+            danhSachThuoc.forEach(t => {
+                const selected = t.maThuoc === maThuocChon ? 'selected' : '';
+                optionsThuoc += `<option value="${t.maThuoc}" ${selected}>${t.tenThuoc} - ${t.giaBan.toLocaleString('vi-VN')}đ (Còn: ${t.soLuong})</option>`;
+            });
+
+            thuocDiv.innerHTML = `
+                <div class="row align-items-center">
+                    <div class="col-md-12 mb-2">
+                        <label class="form-label fw-bold">Thuốc ${thuocCounter}</label>
+                        <button type="button" class="btn btn-danger btn-sm float-end" onclick="xoaThuoc(${thuocCounter})">
+                            <i class="bi bi-trash"></i> Xóa
+                        </button>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label class="form-label">Tên thuốc</label>
+                        <select class="form-select" name="ToaThuoc[${thuocCounter}].MaThuoc">
+                            ${optionsThuoc}
+                        </select>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <label class="form-label">Số lượng</label>
+                        <input type="number" class="form-control" name="ToaThuoc[${thuocCounter}].SoLuong" value="${soLuongChon}" min="1">
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <label class="form-label">Liều dùng</label>
+                        <input type="text" class="form-control" name="ToaThuoc[${thuocCounter}].LieuDung" value="${lieuDungChon}" placeholder="VD: 1-2 viên/lần">
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <label class="form-label">Cách dùng</label>
+                        <input type="text" class="form-control" name="ToaThuoc[${thuocCounter}].CachDung" value="${cachDungChon}" placeholder="VD: Uống sau ăn">
+                    </div>
+                </div>
+            `;
+
+            container.appendChild(thuocDiv);
+        }
+
+        function xoaThuoc(id) {
+            const thuocDiv = document.getElementById('thuoc-' + id);
+            if (thuocDiv) {
+                thuocDiv.remove();
+            }
+        }
+    </script>
+}
