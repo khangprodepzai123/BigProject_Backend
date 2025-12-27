@@ -52,6 +52,52 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "_65131433_BTL1.Controllers.Api.BenhAnController",
+    "Method": "GetMyBenhAn",
+    "RelativePath": "api/BenhAn/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "_65131433_BTL1.Controllers.Api.BenhAnController",
+    "Method": "GetToaThuocHienTai",
+    "RelativePath": "api/BenhAn/toathuoc-hientai",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "_65131433_BTL1.Controllers.Api.BenhNhanController",
+    "Method": "RegisterKham",
+    "RelativePath": "api/BenhNhan/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "_65131433_BTL1.Models.Api.RegisterKhamRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "_65131433_BTL1.Controllers.Api.HoaDonController",
+    "Method": "GetMyHoaDon",
+    "RelativePath": "api/HoaDon/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "_65131433_BTL1.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

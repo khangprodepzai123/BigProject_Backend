@@ -91,6 +91,73 @@
         }
       }
     },
+    "/api/BenhAn/me": {
+      "get": {
+        "tags": [
+          "BenhAn"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BenhAn/toathuoc-hientai": {
+      "get": {
+        "tags": [
+          "BenhAn"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BenhNhan/register": {
+      "post": {
+        "tags": [
+          "BenhNhan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterKhamRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterKhamRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterKhamRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/HoaDon/me": {
+      "get": {
+        "tags": [
+          "HoaDon"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -141,6 +208,48 @@
             "nullable": true
           },
           "matKhau": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterKhamRequest": {
+        "type": "object",
+        "properties": {
+          "hoTenBn": {
+            "type": "string",
+            "nullable": true
+          },
+          "sdt": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngaySinh": {
+            "type": "string",
+            "nullable": true
+          },
+          "gt": {
+            "type": "string",
+            "nullable": true
+          },
+          "doiTuong": {
+            "type": "string",
+            "nullable": true
+          },
+          "diaChi": {
+            "type": "string",
+            "nullable": true
+          },
+          "bhyt": {
+            "type": "string",
+            "nullable": true
+          },
+          "lyDoKham": {
+            "type": "string",
+            "nullable": true
+          },
+          "thoiGianHenKham": {
             "type": "string",
             "nullable": true
           }

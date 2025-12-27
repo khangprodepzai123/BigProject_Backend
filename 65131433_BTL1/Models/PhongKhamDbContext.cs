@@ -35,6 +35,10 @@ public partial class PhongKhamDbContext : DbContext
 
     public virtual DbSet<ToaThuoc> ToaThuocs { get; set; }
 
+    public virtual DbSet<BenhAn> BenhAns { get; set; }
+
+    public virtual DbSet<BenhAnToaThuoc> BenhAnToaThuocs { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=PhongKhamOnline;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
@@ -249,6 +253,8 @@ public partial class PhongKhamDbContext : DbContext
             entity.Property(e => e.TenDangNhap)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.HoTenBn)
+                .HasMaxLength(255);
 
             entity.HasOne(d => d.MaBnNavigation).WithOne(p => p.TaiKhoanBenhNhan)
                 .HasForeignKey<TaiKhoanBenhNhan>(d => d.MaBn)
@@ -298,6 +304,78 @@ public partial class PhongKhamDbContext : DbContext
                 .HasForeignKey(d => d.MaThuoc)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ToaThuoc_Thuoc");
+        });
+
+        modelBuilder.Entity<BenhAn>(entity =>
+        {
+            entity.HasKey(e => e.MaBenhAn).HasName("PK__BenhAn__27250050DE04A84B");
+
+            entity.ToTable("BenhAn");
+
+            entity.Property(e => e.MaBenhAn)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.MaKham)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.MaBn)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.MaBs)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.ChuanDoan).HasMaxLength(500);
+            entity.Property(e => e.HuongXuTri).HasMaxLength(500);
+            entity.Property(e => e.KhamBoPhan).HasMaxLength(1000);
+            entity.Property(e => e.LoaiKham).HasMaxLength(50);
+            entity.Property(e => e.LyDoKham).HasMaxLength(500);
+            entity.Property(e => e.QuaTrinhBenhLy).HasMaxLength(1000);
+            entity.Property(e => e.TienSuBenhNhan).HasMaxLength(500);
+            entity.Property(e => e.TienSuGiaDinh).HasMaxLength(500);
+            entity.Property(e => e.XuTriKham).HasMaxLength(100);
+            entity.Property(e => e.NgayLuu).HasDefaultValueSql("(getdate())");
+
+            entity.HasOne(d => d.MaBnNavigation).WithMany()
+                .HasForeignKey(d => d.MaBn)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_BenhAn_BenhNhan");
+
+            entity.HasOne(d => d.MaBsNavigation).WithMany()
+                .HasForeignKey(d => d.MaBs)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_BenhAn_BacSi");
+        });
+
+        modelBuilder.Entity<BenhAnToaThuoc>(entity =>
+        {
+            entity.HasKey(e => new { e.MaBenhAn, e.MaThuoc }).HasName("PK__BenhAnTo__7185851825F4C153");
+
+            entity.ToTable("BenhAnToaThuoc");
+
+            entity.Property(e => e.MaBenhAn)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.MaThuoc)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.CachDung).HasMaxLength(300);
+            entity.Property(e => e.LieuDung).HasMaxLength(200);
+
+            entity.HasOne(d => d.MaBenhAnNavigation).WithMany(p => p.BenhAnToaThuocs)
+                .HasForeignKey(d => d.MaBenhAn)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_BenhAnToaThuoc_BenhAn");
+
+            entity.HasOne(d => d.MaThuocNavigation).WithMany()
+                .HasForeignKey(d => d.MaThuoc)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_BenhAnToaThuoc_Thuoc");
         });
 
         OnModelCreatingPartial(modelBuilder);

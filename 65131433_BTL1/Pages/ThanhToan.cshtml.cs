@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using _65131433_BTL1.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace _65131433_BTL1.Pages
 {
@@ -33,30 +34,31 @@ namespace _65131433_BTL1.Pages
                 return RedirectToPage("/DanhSachBenhNhan");
             }
 
-            // Load b?nh nh�n + phi?u kh�m
+            // Load bệnh nhân + phiếu khám
             BenhNhan = await _context.BenhNhans
                 .Include(b => b.KhamBenh)
                 .FirstOrDefaultAsync(b => b.MaBn == maBn);
 
             if (BenhNhan == null || BenhNhan.KhamBenh == null)
             {
-                TempData["ErrorMessage"] = "Kh�ng t�m th?y b?nh nh�n ho?c phi?u kh�m!";
+                TempData["ErrorMessage"] = "Không tìm thấy bệnh nhân hoặc phiếu khám!";
                 return RedirectToPage("/DanhSachBenhNhan");
             }
 
             KhamBenh = BenhNhan.KhamBenh;
 
-            // Ki?m tra tr?ng th�i
-            if (KhamBenh.TrangThai != "?� kh�m")
-            {
-                TempData["ErrorMessage"] = $"Ch? c� th? thanh to�n khi phi?u kh�m ? tr?ng th�i '?� kh�m'. Hi?n t?i: {KhamBenh.TrangThai}";
-                return RedirectToPage("/DanhSachBenhNhan");
-            }
+            // TẠM TẮT VALIDATE TRẠNG THÁI - Cho phép thanh toán bất kỳ lúc nào
+            // Kiểm tra trạng thái
+            // if (KhamBenh.TrangThai != "Đã khám")
+            // {
+            //     TempData["ErrorMessage"] = $"Chỉ có thể thanh toán khi phiếu khám ở trạng thái 'Đã khám'. Hiện tại: {KhamBenh.TrangThai}";
+            //     return RedirectToPage("/DanhSachBenhNhan");
+            // }
 
-            // Ki?m tra c� BHYT
+            // Kiểm tra có BHYT
             CoMaBHYT = !string.IsNullOrEmpty(BenhNhan.Bhyt);
 
-            // Load danh s�ch thu?c t? toa
+            // Load danh sách thuốc từ toa
             DanhSachThuoc = await _context.ToaThuocs
                 .Where(t => t.MaKham == KhamBenh.MaKham)
                 .Join(_context.Thuocs,
@@ -73,11 +75,11 @@ namespace _65131433_BTL1.Pages
                     })
                 .ToListAsync();
 
-            // T�nh ti?n
+            // Tính tiền
             TongTienThuoc = DanhSachThuoc.Sum(t => t.ThanhTien);
             TongCong = TienKham + TongTienThuoc;
 
-            // N?u c� BHYT ? Gi?m 80%, ch? tr? 20%
+            // Nếu có BHYT → Giảm 80%, chỉ trả 20%
             if (CoMaBHYT)
             {
                 GiamGiaBHYT = TongCong * 0.8m;
@@ -95,7 +97,7 @@ namespace _65131433_BTL1.Pages
         {
             try
             {
-                // Load b?nh nh�n + phi?u kh�m
+                // Load bệnh nhân + phiếu khám
                 var benhNhan = await _context.BenhNhans
                     .Include(b => b.KhamBenh)
                     .Include(b => b.TaiKhoanBenhNhan)
@@ -103,20 +105,21 @@ namespace _65131433_BTL1.Pages
 
                 if (benhNhan == null || benhNhan.KhamBenh == null)
                 {
-                    TempData["ErrorMessage"] = "Kh�ng t�m th?y b?nh nh�n!";
+                    TempData["ErrorMessage"] = "Không tìm thấy bệnh nhân!";
                     return RedirectToPage("/DanhSachBenhNhan");
                 }
 
                 var khamBenh = benhNhan.KhamBenh;
 
-                // Ki?m tra tr?ng th�i
-                if (khamBenh.TrangThai != "?� kh�m")
-                {
-                    TempData["ErrorMessage"] = "Phi?u kh�m kh�ng ? tr?ng th�i '?� kh�m'!";
-                    return RedirectToPage("/DanhSachBenhNhan");
-                }
+                // TẠM TẮT VALIDATE TRẠNG THÁI - Cho phép thanh toán bất kỳ lúc nào
+                // Kiểm tra trạng thái
+                // if (khamBenh.TrangThai != "Đã khám")
+                // {
+                //     TempData["ErrorMessage"] = "Phiếu khám không ở trạng thái 'Đã khám'!";
+                //     return RedirectToPage("/DanhSachBenhNhan");
+                // }
 
-                // T�nh ti?n
+                // Tính tiền
                 var danhSachThuoc = await _context.ToaThuocs
                     .Where(t => t.MaKham == khamBenh.MaKham)
                     .Join(_context.Thuocs,
@@ -131,10 +134,10 @@ namespace _65131433_BTL1.Pages
                 bool coMaBHYT = !string.IsNullOrEmpty(benhNhan.Bhyt);
                 decimal thanhTien = coMaBHYT ? tongCong * 0.2m : tongCong;
 
-                // Sinh m� h�a ??n
+                // Sinh mã hóa đơn
                 string maHd = await GenerateMaHoaDon();
 
-                // T?o h�a ??n
+                // Tạo hóa đơn
                 var hoaDon = new HoaDon
                 {
                     MaHd = maHd,
@@ -147,10 +150,10 @@ namespace _65131433_BTL1.Pages
 
                 _context.HoaDons.Add(hoaDon);
 
-                // L?u chi ti?t h�a ??n + Tr? kho thu?c
+                // Lưu chi tiết hóa đơn + Trừ kho thuốc
                 foreach (var thuoc in danhSachThuoc)
                 {
-                    // Th�m chi ti?t h�a ??n
+                    // Thêm chi tiết hóa đơn
                     var chiTiet = new ChiTietHoaDon
                     {
                         MaHd = maHd,
@@ -160,7 +163,7 @@ namespace _65131433_BTL1.Pages
                     };
                     _context.ChiTietHoaDons.Add(chiTiet);
 
-                    // Tr? s? l??ng t? kho
+                    // Trừ số lượng từ kho
                     var thuocTrongKho = await _context.Thuocs.FindAsync(thuoc.MaThuoc);
                     if (thuocTrongKho != null)
                     {
@@ -168,10 +171,10 @@ namespace _65131433_BTL1.Pages
                     }
                 }
 
-                // C?p nh?t tr?ng th�i phi?u kh�m
-                khamBenh.TrangThai = "?� thanh to�n";
+                // Cập nhật trạng thái phiếu khám
+                khamBenh.TrangThai = "Đã thanh toán";
 
-                // C?ng ?i?m t�ch l?y (+1)
+                // Cộng điểm tích lũy (+1)
                 if (benhNhan.TaiKhoanBenhNhan != null)
                 {
                     benhNhan.TaiKhoanBenhNhan.DiemTichLuy = (benhNhan.TaiKhoanBenhNhan.DiemTichLuy ?? 0) + 1;
@@ -179,12 +182,12 @@ namespace _65131433_BTL1.Pages
 
                 await _context.SaveChangesAsync();
 
-                TempData["SuccessMessage"] = $"Thanh to�n th�nh c�ng! M� h�a ??n: {maHd}";
+                TempData["SuccessMessage"] = $"Thanh toán thành công! Mã hóa đơn: {maHd}";
                 return RedirectToPage("/ChiTietHoaDon", new { maHd = maHd });
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = $"C� l?i x?y ra: {ex.Message}";
+                TempData["ErrorMessage"] = $"Có lỗi xảy ra: {ex.Message}";
                 return await OnGetAsync(maBn);
             }
         }
@@ -206,6 +209,7 @@ namespace _65131433_BTL1.Pages
 
             return "HD" + nextNumber.ToString("D3");
         }
+
     }
 
     // ViewModel

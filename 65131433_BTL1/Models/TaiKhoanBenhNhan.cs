@@ -15,5 +15,7 @@ public partial class TaiKhoanBenhNhan
 
     public string? MaBn { get; set; }
 
+    public string? HoTenBn { get; set; }
+
     public virtual BenhNhan? MaBnNavigation { get; set; }
 }

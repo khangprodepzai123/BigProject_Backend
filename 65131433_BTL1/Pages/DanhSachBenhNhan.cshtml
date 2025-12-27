@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
     @if (TempData["SuccessMessage"] != null)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,11 +27,53 @@
         </div>
     }
 
+    <div class="row">
+        <!-- Sidebar Filter -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-funnel"></i> Lọc theo thời gian</h5>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="?timeFilter=all&searchString=@Model.SearchString" 
+                               class="text-decoration-none d-flex align-items-center @(Model.TimeFilter == "all" ? "text-primary fw-bold" : "text-dark")">
+                                <i class="bi bi-list-ul me-2"></i> Tất cả
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="?timeFilter=today&searchString=@Model.SearchString" 
+                               class="text-decoration-none d-flex align-items-center @(Model.TimeFilter == "today" ? "text-primary fw-bold" : "text-dark")">
+                                <i class="bi bi-calendar-day me-2"></i> Hôm nay
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="?timeFilter=week&searchString=@Model.SearchString" 
+                               class="text-decoration-none d-flex align-items-center @(Model.TimeFilter == "week" ? "text-primary fw-bold" : "text-dark")">
+                                <i class="bi bi-calendar-week me-2"></i> Tuần này
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="?timeFilter=month&searchString=@Model.SearchString" 
+                               class="text-decoration-none d-flex align-items-center @(Model.TimeFilter == "month" ? "text-primary fw-bold" : "text-dark")">
+                                <i class="bi bi-calendar-month me-2"></i> Tháng này
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-9">
+
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-8">
                     <form method="get" class="d-flex">
+                        <input type="hidden" name="timeFilter" value="@Model.TimeFilter" />
                         <input type="text" name="searchString" value="@Model.SearchString"
                                class="form-control me-2" placeholder="Tìm kiếm theo họ tên...">
                         <button type="submit" class="btn btn-primary">
@@ -60,7 +102,8 @@
                             <th>Ngày sinh</th>
                             <th>Giới tính</th>
                             <th>Đối tượng</th>
-                            <th>Trạng thái khám</th>  <!-- ← THÊM DÒNG NÀY -->
+                            <th>Thời gian đăng ký khám</th>
+                            <th>Trạng thái khám</th>
                             <th class="text-center">Thao tác</th>
                         </tr>
                     </thead>
@@ -90,6 +133,19 @@
                                         }
                                     </td>
                                     <td>
+                                        @if (bn.KhamBenh != null && bn.KhamBenh.NgayKham.HasValue)
+                                        {
+                                            <span class="text-muted">
+                                                <i class="bi bi-calendar-check"></i> 
+                                                @bn.KhamBenh.NgayKham.Value.ToString("dd/MM/yyyy")
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">Chưa đăng ký</span>
+                                        }
+                                    </td>
+                                    <td>
                                         @if (bn.KhamBenh == null)
                                         {
                                             <span class="badge bg-secondary">Chưa khám</span>
@@ -113,15 +169,43 @@
                                     </td>
 
                                     <td class="text-center">
-                                        <a asp-page="/DanhSachBenhNhan" asp-page-handler="TaoPhieuKham" asp-route-maBn="@bn.MaBn" class="btn btn-sm btn-success" title="Khám bệnh">
-                                            <i class="bi bi-stethoscope"></i>
-                                        </a>
-                                        <!-- ← THÊM NÚT THANH TOÁN NÀY -->
-                                        <a href="/ThanhToan?maBn=@bn.MaBn"
-                                           class="btn btn-sm btn-primary"
-                                           title="Thanh toán">
-                                            <i class="bi bi-credit-card"></i>
-                                        </a>
+                                        @if (bn.KhamBenh == null || bn.KhamBenh.TrangThai == "Đã thanh toán")
+                                        {
+                                            <a asp-page="/DanhSachBenhNhan" asp-page-handler="TaoPhieuKham" asp-route-maBn="@bn.MaBn" 
+                                               class="btn btn-sm btn-outline-success" title="Khám bệnh">
+                                                <i class="bi bi-stethoscope"></i> Khám
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-page="/DanhSachBenhNhan" asp-page-handler="TaoPhieuKham" asp-route-maBn="@bn.MaBn" 
+                                               class="btn btn-sm btn-outline-success" title="Tiếp tục khám">
+                                                <i class="bi bi-stethoscope"></i> Tiếp tục
+                                            </a>
+                                        }
+                                        
+                                        @if (bn.KhamBenh != null)
+                                        {
+                                            <a href="/ThanhToan?maBn=@bn.MaBn"
+                                               class="btn btn-sm btn-primary"
+                                               title="Thanh toán">
+                                                <i class="bi bi-credit-card"></i> Thanh toán
+                                            </a>
+                                        }
+                                        
+                                        @if (bn.KhamBenh != null && bn.KhamBenh.TrangThai == "Đã thanh toán")
+                                        {
+                                            <a asp-page="/DanhSachBenhNhan" asp-page-handler="KhamLai" asp-route-maBn="@bn.MaBn" 
+                                               class="btn btn-sm btn-outline-primary" title="Khám lại">
+                                                <i class="bi bi-arrow-repeat"></i> Khám lại
+                                            </a>
+                                            <a asp-page="/DanhSachBenhNhan" asp-page-handler="LuuBenhAn" asp-route-maKham="@bn.KhamBenh.MaKham" 
+                                               class="btn btn-sm btn-outline-info" title="Lưu bệnh án"
+                                               onclick="return confirm('Bạn có chắc muốn lưu bệnh án cho lần khám này?');">
+                                                <i class="bi bi-file-earmark-medical"></i> Lưu bệnh án
+                                            </a>
+                                        }
+                                        
                                         <button type="button" class="btn btn-sm btn-info"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#detailModal"
@@ -149,7 +233,7 @@
                         else
                         {
                             <tr>
-                                <td colspan="7" class="text-center text-muted">
+                                <td colspan="9" class="text-center text-muted">
                                     <i class="bi bi-inbox"></i> Không có bệnh nhân nào
                                 </td>
                             </tr>
@@ -164,7 +248,7 @@
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
                         <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-                            <a class="page-link" href="?pageNumber=@(Model.CurrentPage - 1)&searchString=@Model.SearchString">
+                            <a class="page-link" href="?pageNumber=@(Model.CurrentPage - 1)&searchString=@Model.SearchString&timeFilter=@Model.TimeFilter">
                                 Trước
                             </a>
                         </li>
@@ -172,12 +256,12 @@
                         @for (int i = 1; i <= Model.TotalPages; i++)
                         {
                             <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                                <a class="page-link" href="?pageNumber=@i&searchString=@Model.SearchString">@i</a>
+                                <a class="page-link" href="?pageNumber=@i&searchString=@Model.SearchString&timeFilter=@Model.TimeFilter">@i</a>
                             </li>
                         }
 
                         <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
-                            <a class="page-link" href="?pageNumber=@(Model.CurrentPage + 1)&searchString=@Model.SearchString">
+                            <a class="page-link" href="?pageNumber=@(Model.CurrentPage + 1)&searchString=@Model.SearchString&timeFilter=@Model.TimeFilter">
                                 Sau
                             </a>
                         </li>
@@ -188,6 +272,7 @@
                     Trang @Model.CurrentPage / @Model.TotalPages (Tổng @Model.TotalItems bệnh nhân)
                 </p>
             }
+        </div>
         </div>
     </div>
 </div>

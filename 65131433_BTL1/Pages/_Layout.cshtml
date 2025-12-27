@@ -76,6 +76,17 @@
             margin-top: 3rem;
             border-top: 3px solid var(--medical-blue);
         }
+
+        .sidebar-filter {
+            position: sticky;
+            top: 20px;
+        }
+
+        .list-group-item a:hover {
+            background-color: #f8f9fa;
+            padding-left: 5px;
+            transition: all 0.2s;
+        }
     </style>
 </head>
 <body>
@@ -101,6 +112,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/DanhSachHoaDon"><i class="bi bi-receipt"></i> Hóa đơn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/DanhSachBenhAn"><i class="bi bi-file-earmark-medical"></i> Hồ sơ bệnh án</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/DanhSachTaiKhoan"><i class="bi bi-person-badge"></i> Danh sách tài khoản</a>
                     </li>
                 </ul>
             </div>
