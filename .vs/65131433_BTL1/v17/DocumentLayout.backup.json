@@ -3,6 +3,34 @@
   "WorkspaceRootPath": "D:\\work\\ProjectBig\\65131433_BTL1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|d:\\work\\projectbig\\65131433_btl1\\65131433_btl1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|solutionrelative:65131433_btl1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|d:\\work\\projectbig\\65131433_btl1\\65131433_btl1\\controllers\\api\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|solutionrelative:65131433_btl1\\controllers\\api\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|d:\\work\\projectbig\\65131433_btl1\\65131433_btl1\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|solutionrelative:65131433_btl1\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|d:\\work\\projectbig\\65131433_btl1\\65131433_btl1\\models\\api\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|solutionrelative:65131433_btl1\\models\\api\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|d:\\work\\projectbig\\65131433_btl1\\65131433_btl1\\models\\api\\authrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|solutionrelative:65131433_btl1\\models\\api\\authrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|d:\\work\\projectbig\\65131433_btl1\\65131433_btl1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|solutionrelative:65131433_btl1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|d:\\work\\projectbig\\65131433_btl1\\65131433_btl1\\models\\taikhoanbenhnhan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|solutionrelative:65131433_btl1\\models\\taikhoanbenhnhan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|d:\\work\\projectbig\\65131433_btl1\\65131433_btl1\\pages\\danhsachhoadon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{4FA50CDA-0FD7-4ADA-8389-C9D704FDC89D}|65131433_BTL1\\65131433_BTL1.csproj|solutionrelative:65131433_btl1\\pages\\danhsachhoadon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -54,11 +82,102 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Program.cs",
+              "RelativeDocumentMoniker": "65131433_BTL1\\Program.cs",
+              "ToolTip": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Program.cs",
+              "RelativeToolTip": "65131433_BTL1\\Program.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAAwG8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-26T10:51:39.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\appsettings.json",
+              "RelativeDocumentMoniker": "65131433_BTL1\\appsettings.json",
+              "ToolTip": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\appsettings.json",
+              "RelativeToolTip": "65131433_BTL1\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-26T10:45:21.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "65131433_BTL1\\Services\\JwtService.cs",
+              "ToolTip": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Services\\JwtService.cs",
+              "RelativeToolTip": "65131433_BTL1\\Services\\JwtService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAewB0AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-26T10:45:00.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Models\\Api\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "65131433_BTL1\\Models\\Api\\AuthResponse.cs",
+              "ToolTip": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Models\\Api\\AuthResponse.cs",
+              "RelativeToolTip": "65131433_BTL1\\Models\\Api\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-26T10:44:25.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthRequest.cs",
+              "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Models\\Api\\AuthRequest.cs",
+              "RelativeDocumentMoniker": "65131433_BTL1\\Models\\Api\\AuthRequest.cs",
+              "ToolTip": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Models\\Api\\AuthRequest.cs",
+              "RelativeToolTip": "65131433_BTL1\\Models\\Api\\AuthRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-26T10:44:05.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Controllers\\Api\\AuthController.cs",
+              "RelativeDocumentMoniker": "65131433_BTL1\\Controllers\\Api\\AuthController.cs",
+              "ToolTip": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Controllers\\Api\\AuthController.cs",
+              "RelativeToolTip": "65131433_BTL1\\Controllers\\Api\\AuthController.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAewHAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-26T10:43:25.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TaiKhoanBenhNhan.cs",
+              "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Models\\TaiKhoanBenhNhan.cs",
+              "RelativeDocumentMoniker": "65131433_BTL1\\Models\\TaiKhoanBenhNhan.cs",
+              "ToolTip": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Models\\TaiKhoanBenhNhan.cs",
+              "RelativeToolTip": "65131433_BTL1\\Models\\TaiKhoanBenhNhan.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAUwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-26T10:38:51.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "DanhSachHoaDon.cshtml.cs",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\DanhSachHoaDon.cshtml.cs",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\DanhSachHoaDon.cshtml.cs",
@@ -66,25 +185,24 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\DanhSachHoaDon.cshtml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T09:09:21.676Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T09:09:21.676Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "DanhSachHoaDon.cshtml",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\DanhSachHoaDon.cshtml",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\DanhSachHoaDon.cshtml",
               "ToolTip": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\DanhSachHoaDon.cshtml",
               "RelativeToolTip": "65131433_BTL1\\Pages\\DanhSachHoaDon.cshtml",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAAwG8AAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAwGcAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-12-26T09:09:07.471Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "_Layout.cshtml.cs",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\_Layout.cshtml.cs",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\_Layout.cshtml.cs",
@@ -92,12 +210,11 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\_Layout.cshtml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T09:06:21.921Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T09:06:21.921Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\_ViewStart.cshtml",
@@ -105,12 +222,11 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\_ViewStart.cshtml",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T09:06:18.24Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T09:06:18.24Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\_ViewImports.cshtml",
@@ -118,12 +234,11 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T09:06:16.883Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T09:06:16.883Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\_Layout.cshtml",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\_Layout.cshtml",
@@ -131,12 +246,11 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\_Layout.cshtml",
               "ViewState": "AgIAAFcAAAAAAAAAAAAAwGcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T09:06:10.883Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T09:06:10.883Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "DanhSachBenhNhan.cshtml.cs",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\DanhSachBenhNhan.cshtml.cs",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\DanhSachBenhNhan.cshtml.cs",
@@ -144,12 +258,11 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\DanhSachBenhNhan.cshtml.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAcwB8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T08:58:54.632Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T08:58:54.632Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 14,
               "Title": "DanhSachBenhNhan.cshtml",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\DanhSachBenhNhan.cshtml",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\DanhSachBenhNhan.cshtml",
@@ -157,12 +270,11 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\DanhSachBenhNhan.cshtml",
               "ViewState": "AgIAAHAAAAAAAAAAAAAAwHsAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T08:56:18.782Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T08:56:18.782Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "ChiTietHoaDon.cshtml.cs",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\ChiTietHoaDon.cshtml.cs",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\ChiTietHoaDon.cshtml.cs",
@@ -170,12 +282,11 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\ChiTietHoaDon.cshtml.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAAwFcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T08:55:47.151Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T08:55:47.151Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "ChiTietHoaDon.cshtml",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\ChiTietHoaDon.cshtml",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\ChiTietHoaDon.cshtml",
@@ -183,12 +294,11 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\ChiTietHoaDon.cshtml",
               "ViewState": "AgIAAIQAAAAAAAAAAAAAwJgAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T08:55:34.947Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T08:55:34.947Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "ThanhToan.cshtml",
               "DocumentMoniker": "D:\\work\\ProjectBig\\65131433_BTL1\\65131433_BTL1\\Pages\\ThanhToan.cshtml",
               "RelativeDocumentMoniker": "65131433_BTL1\\Pages\\ThanhToan.cshtml",
@@ -196,8 +306,7 @@
               "RelativeToolTip": "65131433_BTL1\\Pages\\ThanhToan.cshtml",
               "ViewState": "AgIAAHwAAAAAAAAAAAAAwLQAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T08:54:28.551Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T08:54:28.551Z"
             }
           ]
         }

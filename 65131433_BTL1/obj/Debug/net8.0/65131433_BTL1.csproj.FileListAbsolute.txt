@@ -145,3 +145,4 @@ D:\work\ProjectBig\65131433_BTL1\65131433_BTL1\obj\Debug\net8.0\ref\65131433_BTL
 D:\work\ProjectBig\65131433_BTL1\65131433_BTL1\obj\Debug\net8.0\65131433_BTL1.RazorAssemblyInfo.cache
 D:\work\ProjectBig\65131433_BTL1\65131433_BTL1\obj\Debug\net8.0\65131433_BTL1.RazorAssemblyInfo.cs
 D:\work\ProjectBig\65131433_BTL1\65131433_BTL1\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\work\ProjectBig\65131433_BTL1\65131433_BTL1\obj\Debug\net8.0\65131433_BTL1.sourcelink.json

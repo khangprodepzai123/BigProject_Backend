@@ -1,5 +1,57 @@
 [
   {
+    "ContainingType": "_65131433_BTL1.Controllers.Api.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "_65131433_BTL1.Models.Api.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "_65131433_BTL1.Controllers.Api.AuthController",
+    "Method": "Logout",
+    "RelativePath": "api/Auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "_65131433_BTL1.Controllers.Api.AuthController",
+    "Method": "GetMe",
+    "RelativePath": "api/Auth/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "_65131433_BTL1.Controllers.Api.AuthController",
+    "Method": "Signup",
+    "RelativePath": "api/Auth/signup",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "_65131433_BTL1.Models.Api.SignupRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "_65131433_BTL1.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
